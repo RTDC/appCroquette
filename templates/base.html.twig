@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Crokiz - L'app pour choisir les meilleures croquettes !</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+    <main>
+        <header>
+             <img src="{{ asset('img/logo-crokiz.svg') }}" class="logo" alt="logo crokiz.io">
+        </header>
+
+        <div class="wrapper">
+            <div class="col">
+            <h1>Tester des croquettes <br>n'a jamais été aussi facile</h1>
+            </div>
+            <div class="col">
+                <p>Image</p>
+            </div>
+        </div>
+
+            {% block body %}{% endblock %}
+
+        <footer>
+            <p class="txt-footer">RTDC Network - Tous droits réservés</p>
+        </footer>
+    </main>
+</body>
 </html>

@@ -4,27 +4,50 @@
     <meta charset="utf-8">
     <title>Crokiz - L'app pour choisir les meilleures croquettes !</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('img/favicon.png') }}">
+    <script src="https://kit.fontawesome.com/0dd8da31e8.js" crossorigin="anonymous"></script>
+
+    <!-- Fancybox  -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 </head>
 <body>
-    <main>
+<main>
         <header>
+            <nav>
+                <ul class="navi">
+                    <li><svg width="1.6em" height="1.6em" viewBox="0 0 16 16" class="bi bi-file-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                            <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
+                        </svg>
+                        Analyser mes croquettes</li>
+                </ul>
+            </nav>
+
+            <a href="{{ path('index') }}">
              <img src="{{ asset('img/logo-crokiz.svg') }}" class="logo" alt="logo crokiz.io">
+            </a>
+
+
         </header>
 
-        <div class="wrapper">
+     <!--   <div class="wrapper">
             <div class="col">
             <h1>Tester des croquettes <br>n'a jamais été aussi facile</h1>
             </div>
             <div class="col">
                 <p>Image</p>
             </div>
-        </div>
+        </div>-->
 
             {% block body %}{% endblock %}
+
+
 
         <footer>
             <p class="txt-footer">RTDC Network - Tous droits réservés</p>
         </footer>
-    </main>
+        </main>
 </body>
 </html>

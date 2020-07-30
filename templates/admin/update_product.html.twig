@@ -1,0 +1,142 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="modal">
+        <div class="modal__container">
+            <div class="modal__featured">
+                <button type="button" class="button--transparent button--close">
+                    <svg class="nc-icon glyph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                        <g><path fill="#ffffff" d="M1.293,15.293L11,5.586L12.414,7l-8,8H31v2H4.414l8,8L11,26.414l-9.707-9.707 C0.902,16.316,0.902,15.684,1.293,15.293z"></path> </g></svg>
+                    <span class="visuallyhidden">Retour</span>
+                </button>
+                <div class="modal__circle"></div>
+                <img src=" {{ asset('img/illu-croquette-chien.png') }}" alt="Croquette pour chien" class="modal__product" />
+            </div>
+            <div class="modal__content">
+                <h2>Ajouter un nouvel aliment</h2>
+{{ form_start(addPetFoodForm) }}
+<ul class="form-list">
+    <li class="form-list__row">
+        {{ form_label(addPetFoodForm.name, 'Nom du produit') }}
+        {{ form_widget(addPetFoodForm.name) }}
+        {{ form_errors(addPetFoodForm.name)}}
+    </li>
+    <li class="form-list__row">
+        {{ form_label(addPetFoodForm.brand, 'Marque') }}
+        {{ form_widget(addPetFoodForm.brand) }}
+        {{ form_errors(addPetFoodForm.brand)}}
+    </li>
+    <li class="form-list__row">
+        {{ form_label(addPetFoodForm.ean, 'Code barre') }}
+        {{ form_widget(addPetFoodForm.ean) }}
+        {{ form_errors(addPetFoodForm.ean)}}
+    </li>
+    <li class="form-list__row form-list__row--inline">
+        <div>
+            {{ form_label(addPetFoodForm.percent_proteine, '% protéines') }}
+            <div class="form-list__input-inline">
+                {{ form_widget(addPetFoodForm.percent_proteine) }}
+                {{ form_errors(addPetFoodForm.percent_proteine)}}
+            </div>
+        </div>
+        <div>
+            <label>
+                {{ form_label(addPetFoodForm.percent_ashes, '% cendres') }}
+                {{ form_widget(addPetFoodForm.percent_ashes, {'attr': {'class': 'input_book'}}) }}
+                {{ form_errors(addPetFoodForm.percent_ashes)}}
+            </label>
+        </div>
+    </li>
+    <li class="form-list__row form-list__row--inline">
+        <div>
+            {{ form_label(addPetFoodForm.percent_fat, '% gras') }}
+            <div class="form-list__input-inline">
+                {{ form_widget(addPetFoodForm.percent_fat) }}
+                {{ form_errors(addPetFoodForm.percent_fat)}}
+            </div>
+        </div>
+        <div>
+            <label>
+                {{ form_label(addPetFoodForm.humidity, '% Humidité') }}
+                {{ form_widget(addPetFoodForm.humidity) }}
+                {{ form_errors(addPetFoodForm.humidity)}}
+            </label>
+        </div>
+    </li>
+    <li class="form-list__row form-list__row--inline">
+        <div>
+            {{ form_label(addPetFoodForm.ingredient_1,'Ingrédient n°1') }}
+            <div class="form-list__input-inline">
+                {{ form_widget(addPetFoodForm.ingredient_1) }}
+                {{ form_errors(addPetFoodForm.ingredient_1)}}
+            </div>
+        </div>
+        <div>
+            <label>
+                {{ form_label(addPetFoodForm.ingredient_2, 'Ingrédient n°2') }}
+                {{ form_widget(addPetFoodForm.ingredient_2) }}
+                {{ form_errors(addPetFoodForm.ingredient_2)}}
+            </label>
+        </div>
+    </li>
+    <li class="form-list__row form-list__row--inline">
+        <div>
+            {{ form_label(addPetFoodForm.ingredient_3,'Ingrédient n°3') }}
+            <div class="form-list__input-inline">
+                {{ form_widget(addPetFoodForm.ingredient_3) }}
+                {{ form_errors(addPetFoodForm.ingredient_3)}}
+            </div>
+        </div>
+        <div>
+            <label>
+                {{ form_label(addPetFoodForm.type, 'Destiné pour') }}
+                {{ form_widget(addPetFoodForm.type) }}
+                {{ form_errors(addPetFoodForm.type)}}
+            </label>
+        </div>
+    </li>
+    <li class="form-list__row form-list__row--inline">
+        <div>
+            {{ form_label(addPetFoodForm.age,'Age conseillé') }}
+            <div class="form-list__input-inline">
+                {{ form_widget(addPetFoodForm.age) }}
+                {{ form_errors(addPetFoodForm.age)}}
+            </div>
+        </div>
+        <div>
+            <label>
+                {{ form_label(addPetFoodForm.weight, 'Conditionnement') }}
+                {{ form_widget(addPetFoodForm.weight) }}
+                {{ form_errors(addPetFoodForm.weight)}}
+            </label>
+        </div>
+    </li>
+    <li class="form-list__row form-list__row--inline">
+        <div>
+            {{ form_label(addPetFoodForm.cellulose,'% Cellulose') }}
+            <div class="form-list__input-inline">
+                {{ form_widget(addPetFoodForm.cellulose) }}
+                {{ form_errors(addPetFoodForm.cellulose)}}
+            </div>
+        </div>
+        <div>
+            <label>
+                {{ form_label(addPetFoodForm.image, 'Image du produit') }}
+                {{ form_widget(addPetFoodForm.image, {'attr':{'class':'input_image'}}) }}
+                {{ form_errors(addPetFoodForm.image)}}
+            </label>
+        </div>
+    </li>
+    <li>
+        {{ form_widget(addPetFoodForm.submit,{ 'label': 'Ajouter ce produit'}) }}
+    </li>
+</ul>
+</div> <!-- END: .modal__content -->
+</div> <!-- END: .modal__container -->
+</div> <!-- END: .modal -->
+
+
+{{ form_end(addPetFoodForm) }}
+{% endblock %}

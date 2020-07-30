@@ -18,17 +18,17 @@ class Composition
     private $id;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=true)
      */
     private $percent_proteine;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=true)
      */
     private $percent_fat;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=true)
      */
     private $percent_ashes;
 
@@ -38,24 +38,14 @@ class Composition
     private $brand;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=true)
      */
     private $percent_carbohydrates;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="bigint")
      */
     private $ean;
-
-    /**
-     * @ORM\Column(type="integer",nullable=true)
-     */
-    private $note;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $url_affiliation;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -77,41 +67,71 @@ class Composition
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=true)
+     */
+    private $humidity;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=true)
+     */
+    private $weight;
+
+    /**
+     * @ORM\Column(type="string", length=40, nullable=true)
+     */
+    private $age;
+
+    /**
+     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=true)
+     */
+    private $cellulose;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPercentProteine(): ?float
+    public function getPercentProteine(): ?string
     {
         return $this->percent_proteine;
     }
 
-    public function setPercentProteine(float $percent_proteine): self
+    public function setPercentProteine(string $percent_proteine): self
     {
         $this->percent_proteine = $percent_proteine;
 
         return $this;
     }
 
-    public function getPercentFat(): ?float
+    public function getPercentFat(): ?string
     {
         return $this->percent_fat;
     }
 
-    public function setPercentFat(float $percent_fat): self
+    public function setPercentFat(string $percent_fat): self
     {
         $this->percent_fat = $percent_fat;
 
         return $this;
     }
 
-    public function getPercentAshes(): ?float
+    public function getPercentAshes(): ?string
     {
         return $this->percent_ashes;
     }
 
-    public function setPercentAshes(float $percent_ashes): self
+    public function setPercentAshes(string $percent_ashes): self
     {
         $this->percent_ashes = $percent_ashes;
 
@@ -130,12 +150,12 @@ class Composition
         return $this;
     }
 
-    public function getPercentCarbohydrates(): ?float
+    public function getPercentCarbohydrates(): ?string
     {
         return $this->percent_carbohydrates;
     }
 
-    public function setPercentCarbohydrates(float $percent_carbohydrates): self
+    public function setPercentCarbohydrates(string $percent_carbohydrates): self
     {
         $this->percent_carbohydrates = $percent_carbohydrates;
 
@@ -153,31 +173,6 @@ class Composition
 
         return $this;
     }
-
-    public function getNote(): ?int
-    {
-        return $this->note;
-    }
-
-    public function setNote(int $note): self
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    public function getUrlAffiliation(): ?string
-    {
-        return $this->url_affiliation;
-    }
-
-    public function setUrlAffiliation(?string $url_affiliation): self
-    {
-        $this->url_affiliation = $url_affiliation;
-
-        return $this;
-    }
-
     public function getIngredient1(): ?string
     {
         return $this->ingredient_1;
@@ -222,6 +217,78 @@ class Composition
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getHumidity(): ?string
+    {
+        return $this->humidity;
+    }
+
+    public function setHumidity(string $humidity): self
+    {
+        $this->humidity = $humidity;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getWeight(): ?string
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(?string $weight): self
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getAge(): ?string
+    {
+        return $this->age;
+    }
+
+    public function setAge(?string $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getCellulose(): ?string
+    {
+        return $this->cellulose;
+    }
+
+    public function setCellulose(?string $cellulose): self
+    {
+        $this->cellulose = $cellulose;
 
         return $this;
     }

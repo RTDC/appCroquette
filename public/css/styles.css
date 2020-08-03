@@ -20,7 +20,7 @@ header{
     width:auto;
     display:block;
     margin:0 auto;
-    max-height:130px;
+    max-height:180px;
 }
 img.logo {
     width:170px;
@@ -273,15 +273,14 @@ header{
     font-size: 0.9em;
 }
 .header-fiche{
-    height: 45px;
+    height: 70px;
     border-bottom: 3px dotted #e8e8e8;
     margin: 5px;
 }
 .ean{
     font-size: 0.6em;
     color: #5b5656;
-    margin-top: -5px;
-    text-align: right;
+    margin-top: 5px;
 }
 .prot{
     background: #dedcee85;
@@ -298,7 +297,10 @@ header{
 .humi{
     background:#d980c34d;
 }
-.prot,.fat,.ashes,.cell,.humi {
+.gluci{
+    background:#d9ae804d;
+}
+.prot,.fat,.ashes,.cell,.humi,.gluci {
     margin: 1.5%;
     padding: 10px;
     border-radius: 2px;
@@ -315,10 +317,10 @@ header{
     margin-bottom:15px;
 }
 .bloc_compo{
-    height:70px;
+    height:120px;
 }
 .bloc_img{
-    height:130px;
+    height:180px;
     width:100%;
 }
 .text-uppercase{

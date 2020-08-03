@@ -3,12 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Composition;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AddPetFoodType extends AbstractType
 {
@@ -25,15 +25,25 @@ class AddPetFoodType extends AbstractType
             ->add('ingredient_1')
             ->add('ingredient_2')
             ->add('ingredient_3')
-            ->add('age')
-            ->add('type')
+            ->add('age', ChoiceType::class, [
+                'choices' => [
+                    'Adult' => 'adult',
+                    'Puppy' => 'puppy',
+                    'Senior' => 'senior',
+                ],
+            ])
+            ->add('type', ChoiceType::class, [
+            'choices' => [
+                'Chien' => 'chien',
+                'Chat' => 'chat',
+            ],
+            ])
             ->add('image', FileType::class, [
                 'mapped' => false,
                 'label' => 'Image du produit'
             ])
             ->add('weight')
             ->add('cellulose')
-
 
             ->add('submit', SubmitType::class);
     }

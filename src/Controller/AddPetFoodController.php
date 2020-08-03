@@ -32,12 +32,12 @@ class AddPetFoodController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // je récupère l'image uploadée
-            $bookCoverFile = $form->get('image')->getData();
+            $packaging = $form->get('image')->getData();
             $brand = $form->get('brand')->getData();
             $name = $form->get('name')->getData();
 
             // s'il y a bien une image uploadée dans le formulaire
-            if ($bookCoverFile) {
+            if ($packaging) {
 
                 // grâce à son nom original, je gènère un nouveau qui sera unique
                 // pour éviter d'avoir des doublons de noms d'image en BDD
@@ -56,19 +56,17 @@ class AddPetFoodController extends AbstractController
                 if(substr($uniqueCoverName, -1, 1) == '-')
                     $uniqueCoverName= substr($uniqueCoverName, 0, -1);
                 $uniqueCoverName = filter_var(strip_tags($uniqueCoverName), FILTER_SANITIZE_URL);
-                $uniqueCoverName = $uniqueCoverName . '.' . $bookCoverFile->guessExtension();
-
+                $uniqueCoverName = $uniqueCoverName . '.' . $packaging->guessExtension();
 
                 try {
 
-                    $bookCoverFile->move(
+                    $packaging->move(
                         $this->getParameter('packaging'),
                         $uniqueCoverName
                     );
                 } catch (FileException $e) {
                     return new Response($e->getMessage());
                 }
-
 
                 // je sauvegarde dans la colonne bookCover le nom de mon image
                 $petfood->setImage($uniqueCoverName);

@@ -162,7 +162,7 @@ class Composition
         return $this;
     }
 
-    public function getEan(): ?int
+    public function getEan(): ?string
     {
         return $this->ean;
     }

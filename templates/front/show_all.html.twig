@@ -6,6 +6,9 @@
 
             {% for petfood in petfoods|slice(start=0, length=24) %}
 
+                <!-- Calcul du % de glucides -->
+                {% set glucides = 100 - (petfood.percentproteine + petfood.percentfat + petfood.percentashes + petfood.cellulose + petfood.humidity)  %}
+
             <li class="flex-item vignette">
                 {% if petfood.percentproteine >= 33 %}
                     <div class="bloc_note"><p class="note a">A</p></div>
@@ -16,7 +19,7 @@
                 {% endif %}
 
                 <div class="header-fiche">
-                <h2 class="title_h2"> {{ petfood.name }} {{ petfood.weight|round(1, 'floor') }}kg<br>{{ petfood.brand }} </h2>
+                <h2 class="title_h2"> {{ petfood.name }}<br>{{ petfood.brand }} </h2>
                 <p class="ean">{{ petfood.ean }}</p>
                 </div>
 
@@ -26,20 +29,27 @@
                     <li class="flex-item ashes"><span>Cendres</span> {{ petfood.percentashes|round(1, 'floor') }}%</li>
                     <li class="flex-item cell"><span>Cellulose</span> {{ petfood.cellulose|round(1, 'floor') }}%</li>
                     <li class="flex-item humi"><span>Humidité</span> {{ petfood.humidity|round(1, 'floor') }}%</li>
+                    <li class="flex-item gluci"><span>Glucides</span> {{ glucides }}%</li>
+
+
                 </ul>
                 <section class="bloc_compo">
                     <p class="text-uppercase"><b>Ingrédients principaux :</b> {{ petfood.ingredient1 }}, {{ petfood.ingredient2 }}, {{ petfood.ingredient3 }}</p>
                     <p class="text-uppercase"><b>Age conseillé :</b> {{ petfood.age }} </p>
+                    <p class="text-uppercase"><b>Conditionnement :</b> {{ petfood.weight|round(1, 'floor') }}kg </p>
                     <p class="text-uppercase"><b>Pour :</b> {{ petfood.type }} </p>
                     <!--<p class="text-uppercase"><a href="#">Lien sponsorisé</a> </p>-->
                 </section>
                 <section class="bloc_img">
-                    <a data-fancybox="gallery" href="{{ asset('uploads/packaging')}}/{{ petfood.image }}"><img class="img-resp-croquette" src="{{ asset('uploads/packaging')}}/{{ petfood.image }}" alt="{{ petfood.name }} de {{ petfood.brand }}"></a>
+
+                   <!-- pour redimm avec imagick |imagine_filter('small') -->
+                    <a data-fancybox="gallery" href="{{ asset('uploads/packaging/' ~ petfood.image) }}"><img class="img-resp-croquette" src="{{ asset('uploads/packaging')}}/{{ petfood.image }}" alt="{{ petfood.name }} {{ petfood.age }} {{ petfood.weight|round(1, 'floor') }}kg  de {{ petfood.brand }}"></a>
                 </section>
 
-                <a href="{{ path('admin_update_product_update', {'id': petfood.id}) }}" onClick="Message() title="Modifier"><div class="modif_btn"><i class="far fa-edit"></i></div></a>
-                <a href="{{ path('admin_update_product_update', {'id': petfood.id}) }}" onClick="Message() title="Supprimer"><div class="delete_btn"><i class="far fa-trash-alt"></i></div></a>
+                <a href="{{ path('admin_update_product_update', {'id': petfood.id}) }}" title="Modifier"><div class="modif_btn"><i class="far fa-edit"></i></div></a>
+                <a href="{{ path('admin_update_product_update', {'id': petfood.id}) }}" title="Supprimer"><div class="delete_btn"><i class="far fa-trash-alt"></i></div></a>
 
+                <!-- onsubmit="return confirm('Etes vous vraiment sur ?') -->
             </li>
         {% endfor %}
         </ul>
